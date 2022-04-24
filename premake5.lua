@@ -24,7 +24,8 @@ project "LetsSeeIfThisWorks"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"Submodules/GLAD/src/glad.c"
+		"Submodules/GLAD/src/glad.c",
+		"Submodules/stb_image/stb_image.h"
 	}
 
 	includedirs
