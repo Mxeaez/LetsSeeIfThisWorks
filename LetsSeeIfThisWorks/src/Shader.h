@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "FileSystem.h"
+#include <glm.hpp>
 
 class Shader
 {
@@ -10,6 +10,8 @@ public:
 	Shader(const std::string& vertexPath, const std::string& fragmentPath);
 
 	void Use() const;
+
+	void UniformMat4(const std::string& name, glm::mat4 matrix) const;
 
 private:
 

@@ -16,6 +16,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Resources">
+      <UniqueIdentifier>{D76C8757-432D-038E-0C68-4C0B78E7476A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Shaders">
+      <UniqueIdentifier>{06ADC7FB-7262-40F1-FB56-3AC8670B37F5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Submodules\stb_image\stb_image.h">
@@ -27,11 +33,18 @@
     <ClInclude Include="src\Shader.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Texture.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Submodules\GLAD\src\glad.c">
       <Filter>Submodules\GLAD\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileSystem.cpp">
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Shader.cpp">
       <Filter>src</Filter>
@@ -39,14 +52,26 @@
     <ClCompile Include="src\Source.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\FileSystem.cpp" />
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="src\Resources\pepe.png" />
+    <None Include="src\Shaders\FragmentShader.glsl">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\VertexShader.glsl">
+      <Filter>src\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\FragmentShader.glsl" />
-    <None Include="src\Shaders\VertexShader.glsl" />
+    <Image Include="src\Resources\awesomeface.png">
+      <Filter>src\Resources</Filter>
+    </Image>
+    <Image Include="src\Resources\pepe.png">
+      <Filter>src\Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -37,7 +37,7 @@ project "LetsSeeIfThisWorks"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.GLM}",
-		"%{IncludeDir.STBIMAGE}"
+		"%{IncludeDir.STBIMAGE"
 	}
 
 	links

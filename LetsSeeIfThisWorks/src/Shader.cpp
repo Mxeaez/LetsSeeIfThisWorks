@@ -1,5 +1,7 @@
 #include "Shader.h"
 #include "glad/glad.h"
+#include "FileSystem.h"
+#include "gtc/type_ptr.hpp"
 
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
 {
@@ -36,6 +38,12 @@ Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
 void Shader::Use() const
 {
 	glUseProgram(id);
+}
+
+void Shader::UniformMat4(const std::string& name, glm::mat4 matrix) const
+{
+	unsigned int location = glGetUniformLocation(id, name.c_str());
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
 unsigned int Shader::CreateShader(int shaderType, const char* shaderCode)
