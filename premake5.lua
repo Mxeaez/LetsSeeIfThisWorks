@@ -9,6 +9,8 @@ IncludeDir["GLFW"] = "Submodules/GLFW/include"
 IncludeDir["GLAD"] = "Submodules/GLAD/include"
 IncludeDir["GLM"] = "Submodules/glm/glm"
 IncludeDir["STBIMAGE"] = "Submodules/stb_image"
+IncludeDir["SPDLOG"] = "Submodules/spdlog/include"
+IncludeDir["IMGUI"] = "Submodules/imgui"
 
 include "Submodules/GLFW"
 
@@ -37,7 +39,9 @@ project "LetsSeeIfThisWorks"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.GLM}",
-		"%{IncludeDir.STBIMAGE}"
+		"%{IncludeDir.STBIMAGE}",
+		"%{IncludeDir.SPDLOG}",
+		"%{IncludeDir.IMGUI}"
 	}
 
 	links
