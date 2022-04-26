@@ -124,6 +124,9 @@ int main()
 
 	glm::vec3 cameraUp = glm::normalize(glm::cross(cameraDirection, cameraRight));
 
+	Logger::Init();
+	Logger::GetLogger()->trace("Game Engine starting up!");
+
 	while (window.Running())
 	{
 		window.BeginFrame();
