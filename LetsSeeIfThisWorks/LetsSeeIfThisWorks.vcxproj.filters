@@ -4,12 +4,6 @@
     <Filter Include="Submodules">
       <UniqueIdentifier>{2820FA03-14D8-3B51-7DDF-14AD69B6D641}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Submodules\GLAD">
-      <UniqueIdentifier>{AF331796-1BBF-845A-24D0-074F90DAE05A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Submodules\GLAD\src">
-      <UniqueIdentifier>{4631F370-B292-D07E-3B00-1731A760073E}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Submodules\stb_image">
       <UniqueIdentifier>{C22259AE-AEB1-E277-57D0-F672433EF31D}</UniqueIdentifier>
     </Filter>
@@ -30,20 +24,30 @@
     <ClInclude Include="src\FileSystem.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Input.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logger.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Shader.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Texture.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Input.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\Window.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Submodules\GLAD\src\glad.c">
-      <Filter>Submodules\GLAD\src</Filter>
-    </ClCompile>
     <ClCompile Include="src\FileSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logger.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Shader.cpp">
@@ -55,8 +59,9 @@
     <ClCompile Include="src\Texture.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Input.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\Window.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\FragmentShader.glsl">
