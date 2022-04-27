@@ -1,5 +1,8 @@
 #include "Window.h"
 #include <iostream>
+#include "imgui.h"
+#include "ImGui/imgui_impl_glfw.h"
+#include "ImGui/imgui_impl_opengl3.h"
 
 Window::Window(const std::string& name, int width, int height)
 {
@@ -20,6 +23,28 @@ Window::Window(const std::string& name, int width, int height)
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1);
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+
+	ImGui::StyleColorsDark();
+
+	ImGuiStyle& style = ImGui::GetStyle();
+	if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+	{
+		style.WindowRounding = 0.0f;
+		style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+	}
+
+	// Setup Platform/Renderer backends
+	ImGui_ImplGlfw_InitForOpenGL(window, true);                              
+	ImGui_ImplOpenGL3_Init("#version 460");
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{

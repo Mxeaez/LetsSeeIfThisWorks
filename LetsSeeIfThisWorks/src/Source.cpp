@@ -10,6 +10,9 @@
 #include "gtc/type_ptr.hpp"
 #include "Window.h"
 #include "Logger.h"
+#include "imgui.h"
+#include "ImGui/imgui_impl_glfw.h"
+#include "ImGui/imgui_impl_opengl3.h"
 
 int main()
 {
@@ -127,10 +130,15 @@ int main()
 	Logger::Init();
 	Logger::GetLogger()->trace("Game Engine starting up!");
 
+	auto io = ImGui::GetIO();
+
 	while (window.Running())
 	{
 		window.BeginFrame();
 
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 		//glm::mat4 model = glm::mat4(1.0f);
 		//model = glm::rotate(model, (float) glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
 
@@ -155,6 +163,21 @@ int main()
 
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
+
+		bool show_demo_window = true;
+		if (show_demo_window)
+			ImGui::ShowDemoWindow(&show_demo_window); 
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			glfwMakeContextCurrent(backup_current_context);
+		}                           
 
 		window.EndFrame();
 	}
