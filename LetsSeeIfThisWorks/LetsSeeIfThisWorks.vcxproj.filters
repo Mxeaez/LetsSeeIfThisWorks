@@ -33,9 +33,6 @@
     <ClInclude Include="src\ImGui\imgui_impl_opengl3.h">
       <Filter>src\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\ImGui\imgui_impl_opengl3_loader.h">
-      <Filter>src\ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Input.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -51,6 +48,14 @@
     <ClInclude Include="src\Window.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="src\Components\Camera.h" />
+    <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\Components\Component.h" />
+    <ClInclude Include="src\World.h" />
+    <ClInclude Include="src\Components\Transform.h" />
+    <ClInclude Include="src\Components\CameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FileSystem.cpp">
@@ -80,6 +85,12 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Components\Camera.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\World.cpp" />
+    <ClCompile Include="src\Components\Transform.cpp" />
+    <ClCompile Include="src\Components\CameraController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\FragmentShader.glsl">

@@ -1,14 +1,39 @@
 #include "Input.h"
+#include "Application.h"
 
-void Input::AddBinding(int key, const Callback& callback)
+namespace Input
 {
-	m_Callbacks[key].push_back(callback);
-}
 
-void Input::OnKeyPress(int key)
-{
-	for (Callback& callback : m_Callbacks[key])
+	bool Input::IsKeyPressed(int key)
 	{
-		callback();
+
+		GLFWwindow* window = Application::Get().GetWindow().GetWindow();
+		int state = glfwGetKey(window, key);
+
+		return state == GLFW_PRESS;
 	}
+
+	std::pair<float, float> Input::GetMousePos()
+	{
+		GLFWwindow* window = Application::Get().GetWindow().GetWindow();
+		double x, y;
+		glfwGetCursorPos(window, &x, &y);
+
+		return { (float)x, (float)y };
+	}
+
+	float GetMouseX()
+	{
+		auto [x, y] = GetMousePos();
+
+		return x;
+	}
+
+	float GetMouseY()
+	{
+		auto [x, y] = GetMousePos();
+
+		return y;
+	}
+
 }

@@ -23,6 +23,7 @@ Window::Window(const std::string& name, int width, int height)
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSwapInterval(1);
 
 	IMGUI_CHECKVERSION();

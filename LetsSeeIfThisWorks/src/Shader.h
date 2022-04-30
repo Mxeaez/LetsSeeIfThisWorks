@@ -12,6 +12,7 @@ public:
 	void Use() const;
 
 	void UniformMat4(const std::string& name, glm::mat4 matrix) const;
+	void UniformVec3(const std::string& name, float* vec) const;
 
 private:
 

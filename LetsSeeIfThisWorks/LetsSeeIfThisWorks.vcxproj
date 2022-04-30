@@ -92,7 +92,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Submodules\stb_image\stb_image.h" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Components\Camera.h" />
+    <ClInclude Include="src\Components\CameraController.h" />
+    <ClInclude Include="src\Components\Component.h" />
+    <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\FileSystem.h" />
+    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\ImGui\imgui_impl_glfw.h" />
     <ClInclude Include="src\ImGui\imgui_impl_opengl3.h" />
     <ClInclude Include="src\ImGui\imgui_impl_opengl3_loader.h" />
@@ -101,17 +107,24 @@
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\Camera.cpp" />
+    <ClCompile Include="src\Components\CameraController.cpp" />
+    <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\FileSystem.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\ImGui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Source.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\FragmentShader.glsl" />

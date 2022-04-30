@@ -1,19 +1,12 @@
 #pragma once
-#include <map>
-#include <vector>
-#include <functional>
+#include <utility>
 
-class Input
+namespace Input
 {
-public:
 
-	using Callback = std::function<void()>;
-
-	void AddBinding(int key, const Callback& callback);
-	void OnKeyPress(int key);
-
-private:
-
-	std::map<int, std::vector<Callback>> m_Callbacks;
+	bool IsKeyPressed(int key);
+	std::pair<float, float> GetMousePos();
+	float GetMouseX();
+	float GetMouseY();
 
 };

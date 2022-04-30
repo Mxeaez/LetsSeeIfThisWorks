@@ -46,6 +46,12 @@ void Shader::UniformMat4(const std::string& name, glm::mat4 matrix) const
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
+void Shader::UniformVec3(const std::string& name, float* vec) const
+{
+	unsigned int location = glGetUniformLocation(id, name.c_str());
+	glUniform3fv(location, 1, vec);
+}
+
 unsigned int Shader::CreateShader(int shaderType, const char* shaderCode)
 {
 	int success;
