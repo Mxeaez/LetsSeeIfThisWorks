@@ -31,8 +31,8 @@ Texture::Texture(const std::string& filePath)
 	glBindTexture(GL_TEXTURE_2D, NULL);
 }
 
-void Texture::Use() const
+void Texture::Use(GLenum unit) const
 {
-	glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(unit);
 	glBindTexture(GL_TEXTURE_2D, id);
 }

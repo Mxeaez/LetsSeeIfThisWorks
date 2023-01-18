@@ -10,6 +10,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Components">
+      <UniqueIdentifier>{221ADC4D-0EE8-CF53-F77B-407AE3E8ABB8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\ImGui">
       <UniqueIdentifier>{170E22B3-8378-D629-CCB6-87CF3860B47E}</UniqueIdentifier>
     </Filter>
@@ -24,13 +27,34 @@
     <ClInclude Include="..\Submodules\stb_image\stb_image.h">
       <Filter>Submodules\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Application.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Camera.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\CameraController.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Component.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Transform.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\FileSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ImGui\imgui_impl_glfw.h">
       <Filter>src\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\ImGui\imgui_impl_opengl3.h">
+      <Filter>src\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ImGui\imgui_impl_opengl3_loader.h">
       <Filter>src\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Input.h">
@@ -48,17 +72,27 @@
     <ClInclude Include="src\Window.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Application.h" />
-    <ClInclude Include="src\ImGui\imgui_impl_opengl3_loader.h" />
-    <ClInclude Include="src\Components\Camera.h" />
-    <ClInclude Include="src\GameObject.h" />
-    <ClInclude Include="src\Components\Component.h" />
-    <ClInclude Include="src\World.h" />
-    <ClInclude Include="src\Components\Transform.h" />
-    <ClInclude Include="src\Components\CameraController.h" />
+    <ClInclude Include="src\World.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Camera.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\CameraController.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Transform.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
     <ClCompile Include="src\FileSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\ImGui\imgui_impl_glfw.cpp">
@@ -85,20 +119,9 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\Components\Camera.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\World.cpp" />
-    <ClCompile Include="src\Components\Transform.cpp" />
-    <ClCompile Include="src\Components\CameraController.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\FragmentShader.glsl">
-      <Filter>src\Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\VertexShader.glsl">
-      <Filter>src\Shaders</Filter>
-    </None>
+    <ClCompile Include="src\World.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png">
@@ -107,5 +130,19 @@
     <Image Include="src\Resources\pepe.png">
       <Filter>src\Resources</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\FragmentShader.frag">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\LightFragmentShader.frag">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\LightVertexShader.vert">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\VertexShader.vert">
+      <Filter>src\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

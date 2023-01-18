@@ -56,6 +56,19 @@ void Camera::OnUpdate()
 	glUseProgram(program);
 	unsigned int location = glGetUniformLocation(program, "view");
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m_ViewMat));
+
+	//location = glGetUniformLocation(program, "projection");
+	//glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m_ProjectionMat));
+}
+
+const glm::mat4 Camera::GetViewMat() const
+{
+	return m_ViewMat;
+}
+
+const glm::mat4 Camera::GetProjMat() const
+{
+	return m_ProjectionMat;
 }
 
 void Camera::UpdateViewMat()

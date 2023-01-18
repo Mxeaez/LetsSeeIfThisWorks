@@ -45,7 +45,7 @@ Window::Window(const std::string& name, int width, int height)
 
 	// Setup Platform/Renderer backends
 	ImGui_ImplGlfw_InitForOpenGL(window, true);                              
-	ImGui_ImplOpenGL3_Init("#version 460");
+	ImGui_ImplOpenGL3_Init("#version 330");
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{

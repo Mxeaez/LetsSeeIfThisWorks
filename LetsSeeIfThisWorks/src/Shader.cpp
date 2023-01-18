@@ -46,10 +46,28 @@ void Shader::UniformMat4(const std::string& name, glm::mat4 matrix) const
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
-void Shader::UniformVec3(const std::string& name, float* vec) const
+void Shader::UniformVec3(const std::string& name, const glm::vec3& value) const
 {
 	unsigned int location = glGetUniformLocation(id, name.c_str());
-	glUniform3fv(location, 1, vec);
+	glUniform3fv(location, 1, &value[0]);
+}
+
+void Shader::UniformVec3(const std::string& name, float x, float y, float z) const
+{
+	unsigned int location = glGetUniformLocation(id, name.c_str());
+	glUniform3f(location, x, y, z);
+}
+
+void Shader::UniformFloat(const std::string& name, float value) const
+{
+	unsigned int location = glGetUniformLocation(id, name.c_str());
+	glUniform1f(location, value);
+}
+
+void Shader::UniformInt(const std::string& name, int value) const
+{
+	unsigned int location = glGetUniformLocation(id, name.c_str());
+	glUniform1i(location, value);
 }
 
 unsigned int Shader::CreateShader(int shaderType, const char* shaderCode)

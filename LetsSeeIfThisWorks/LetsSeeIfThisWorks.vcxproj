@@ -61,7 +61,7 @@
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -110,6 +110,7 @@
     <ClInclude Include="src\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\CameraController.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
@@ -120,15 +121,10 @@
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Source.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\World.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\FragmentShader.glsl" />
-    <None Include="src\Shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png" />
@@ -147,6 +143,12 @@
     <ProjectReference Include="..\Submodules\spdlog\spdlog.vcxproj">
       <Project>{8EAD431C-7A4F-6EF2-630A-82464F4BF542}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\FragmentShader.frag" />
+    <None Include="src\Shaders\LightFragmentShader.frag" />
+    <None Include="src\Shaders\LightVertexShader.vert" />
+    <None Include="src\Shaders\VertexShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

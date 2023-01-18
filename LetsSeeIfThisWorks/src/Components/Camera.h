@@ -12,7 +12,8 @@ public:
 	void OnStart() override;
 	void OnUpdate() override;
 
-	glm::mat4 GetViewMat() const;
+	const glm::mat4 GetViewMat() const;
+	const glm::mat4 GetProjMat() const;
 
 private:
 
