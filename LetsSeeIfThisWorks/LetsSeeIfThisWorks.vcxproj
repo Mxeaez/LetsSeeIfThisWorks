@@ -96,6 +96,7 @@
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\CameraController.h" />
     <ClInclude Include="src\Components\Component.h" />
+    <ClInclude Include="src\Components\Light.h" />
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\FileSystem.h" />
     <ClInclude Include="src\GameObject.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\CameraController.cpp" />
+    <ClCompile Include="src\Components\Light.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\FileSystem.cpp" />
     <ClCompile Include="src\GameObject.cpp" />

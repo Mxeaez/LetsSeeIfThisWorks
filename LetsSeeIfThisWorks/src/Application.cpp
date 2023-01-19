@@ -173,6 +173,10 @@ void Application::Run()
 	shader.Use();
 	shader.UniformInt("material.diffuse", 0);
 	shader.UniformInt("material.specular", 1);
+	shader.UniformFloat("light.constant", 1.0f);
+	shader.UniformFloat("light.linear", 0.09f);
+	shader.UniformFloat("light.quadratic", 0.032f);
+	shader.UniformFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
 
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, light->GetComponent<Transform>()->GetPosition());
@@ -202,16 +206,11 @@ void Application::Run()
 
 		shader.Use();
 
-		glm::vec3 lightColor;
-		lightColor.x = sin(glfwGetTime() * 2.0f);
-		lightColor.y = sin(glfwGetTime() * 0.7f);
-		lightColor.z = sin(glfwGetTime() * 1.3f); 
-
+		glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 		glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f);
 		glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
 
 		shader.UniformFloat("material.shininess", 32.0f);
-
 		shader.UniformVec3("light.ambient", ambientColor);
 		shader.UniformVec3("light.diffuse", diffuseColor);
 		shader.UniformVec3("light.specular", 1.0f, 1.0f, 1.0f);
@@ -224,7 +223,8 @@ void Application::Run()
 			shader.UniformMat4("model", model);
 			shader.UniformMat4("view", viewMat);
 			shader.UniformMat4("projection", projMat);
-			shader.UniformVec3("lightPos", light->GetComponent<Transform>()->GetPosition());
+			shader.UniformVec3("light.position", mainCamera->GetComponent<Transform>()->GetPosition());
+			shader.UniformVec3("light.direction", mainCamera->GetComponent<Transform>()->GetForwardVector());
 			shader.UniformVec3("viewPos", mainCamera->GetComponent<Transform>()->GetPosition());
 
 			glBindVertexArray(vao);
