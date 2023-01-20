@@ -11,3 +11,6 @@
 	path = Submodules/imgui
 	url = https://github.com/Mxeaez/imgui.git
 	branch = docking
+[submodule "Submodules/assimp"]
+	path = Submodules/assimp
+	url = https://github.com/Mxeaez/assimp.git

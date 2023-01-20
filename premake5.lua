@@ -12,7 +12,7 @@ IncludeDir["GLM"] = "Submodules/glm/glm"
 IncludeDir["STBIMAGE"] = "Submodules/stb_image"
 IncludeDir["SPDLOG"] = "Submodules/spdlog/include"
 IncludeDir["IMGUI"] = "Submodules/imgui"
-IncludeDir["ASSIMP"] = "Submodules/assimp"
+IncludeDir["ASSIMP"] = "Submodules/assimp/include"
 
 include "Submodules/GLFW"
 include "Submodules/GLAD"
@@ -49,6 +49,7 @@ project "LetsSeeIfThisWorks"
 		"%{IncludeDir.SPDLOG}",
 		"%{IncludeDir.IMGUI}",
 		"%{IncludeDir.ASSIMP}"
+		
 	}
 
 	links
