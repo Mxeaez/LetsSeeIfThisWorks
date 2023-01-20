@@ -19,6 +19,9 @@
     <Filter Include="src\Resources">
       <UniqueIdentifier>{D76C8757-432D-038E-0C68-4C0B78E7476A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Shaders">
+      <UniqueIdentifier>{06ADC7FB-7262-40F1-FB56-3AC8670B37F5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Submodules\stb_image\stb_image.h">
@@ -125,6 +128,20 @@
     <ClCompile Include="src\World.cpp">
       <Filter>src</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\FragmentShader.frag">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\LightFragmentShader.frag">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\LightVertexShader.vert">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\VertexShader.vert">
+      <Filter>src\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png">

@@ -35,7 +35,8 @@ project "LetsSeeIfThisWorks"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/src/Resources/**.png",
-		"%{prj.name}/src/Shaders/**.glsl",
+		"%{prj.name}/src/Shaders/**.vert",
+	    "%{prj.name}/src/Shaders/**.frag",
 		"Submodules/stb_image/stb_image.h"
 	}
 
