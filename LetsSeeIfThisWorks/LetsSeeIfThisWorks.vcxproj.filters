@@ -19,9 +19,6 @@
     <Filter Include="src\Resources">
       <UniqueIdentifier>{D76C8757-432D-038E-0C68-4C0B78E7476A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Shaders">
-      <UniqueIdentifier>{06ADC7FB-7262-40F1-FB56-3AC8670B37F5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Submodules\stb_image\stb_image.h">
@@ -37,6 +34,9 @@
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\Component.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Light.h">
       <Filter>src\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Components\Transform.h">
@@ -75,7 +75,6 @@
     <ClInclude Include="src\World.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\Light.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp">
@@ -85,6 +84,9 @@
       <Filter>src\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Components\CameraController.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Light.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Components\Transform.cpp">
@@ -123,7 +125,6 @@
     <ClCompile Include="src\World.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\Light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png">
@@ -132,19 +133,8 @@
     <Image Include="src\Resources\pepe.png">
       <Filter>src\Resources</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\FragmentShader.frag">
-      <Filter>src\Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\LightFragmentShader.frag">
-      <Filter>src\Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\LightVertexShader.vert">
-      <Filter>src\Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\VertexShader.vert">
-      <Filter>src\Shaders</Filter>
-    </None>
+    <Image Include="src\Resources\pepe_specular_map.png">
+      <Filter>src\Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

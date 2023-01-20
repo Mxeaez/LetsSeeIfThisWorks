@@ -1,7 +1,7 @@
 workspace "LetsSeeIfThisWorks"
 	architecture "x64"
 	configurations { "Debug", "Release" }
-	staticruntime "off"
+	staticruntime "on"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -12,11 +12,13 @@ IncludeDir["GLM"] = "Submodules/glm/glm"
 IncludeDir["STBIMAGE"] = "Submodules/stb_image"
 IncludeDir["SPDLOG"] = "Submodules/spdlog/include"
 IncludeDir["IMGUI"] = "Submodules/imgui"
+IncludeDir["ASSIMP"] = "Submodules/assimp"
 
 include "Submodules/GLFW"
 include "Submodules/GLAD"
 include "Submodules/imgui"
 include "Submodules/spdlog"
+include "Submodules/assimp"
 
 project "LetsSeeIfThisWorks"
 	location "LetsSeeIfThisWorks"
@@ -44,7 +46,8 @@ project "LetsSeeIfThisWorks"
 		"%{IncludeDir.GLM}",
 		"%{IncludeDir.STBIMAGE}",
 		"%{IncludeDir.SPDLOG}",
-		"%{IncludeDir.IMGUI}"
+		"%{IncludeDir.IMGUI}",
+		"%{IncludeDir.ASSIMP}"
 	}
 
 	links
@@ -53,7 +56,8 @@ project "LetsSeeIfThisWorks"
 		"GLAD",
 		"ImGui",
 		"spdlog",
-		"opengl32.lib"
+		"opengl32.lib",
+		"assimp"
 	}
 
 	filter "configurations:Debug"

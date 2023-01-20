@@ -59,9 +59,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;..\Submodules\assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -74,13 +74,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;..\Submodules\assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -131,6 +131,7 @@
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png" />
     <Image Include="src\Resources\pepe.png" />
+    <Image Include="src\Resources\pepe_specular_map.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Submodules\GLFW\GLFW.vcxproj">
@@ -145,12 +146,9 @@
     <ProjectReference Include="..\Submodules\spdlog\spdlog.vcxproj">
       <Project>{8EAD431C-7A4F-6EF2-630A-82464F4BF542}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Shaders\FragmentShader.frag" />
-    <None Include="src\Shaders\LightFragmentShader.frag" />
-    <None Include="src\Shaders\LightVertexShader.vert" />
-    <None Include="src\Shaders\VertexShader.vert" />
+    <ProjectReference Include="..\Submodules\assimp\assimp.vcxproj">
+      <Project>{724885F2-5EEA-AFC8-47A5-C31C33E63619}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
