@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png" />
+    <Image Include="src\Resources\backpack\normal.png" />
     <Image Include="src\Resources\pepe.png" />
     <Image Include="src\Resources\pepe_specular_map.png" />
   </ItemGroup>

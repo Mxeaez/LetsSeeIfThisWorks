@@ -89,7 +89,7 @@ void Application::Run()
 		pointLights.push_back(light);
 	}
 
-	Model backPack("src/resources/backpack");
+	Model backPack("src/resources/backpack/backpack.obj");
 
 	while (m_Window.Running())
 	{
