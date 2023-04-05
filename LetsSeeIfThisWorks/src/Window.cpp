@@ -11,8 +11,8 @@ Window::Window(const std::string& name, int width, int height)
 	{
 		std::cout << "Failed to initialize GLFW" << std::endl;
 	}
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
@@ -54,6 +54,9 @@ Window::Window(const std::string& name, int width, int height)
 
 	glViewport(0, 0, width, height);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_STENCIL_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 bool Window::Running() const
@@ -64,7 +67,7 @@ bool Window::Running() const
 void Window::BeginFrame() const
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
 void Window::EndFrame() const

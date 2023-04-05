@@ -19,8 +19,10 @@
 #include "Components/Camera.h"
 #include "Components/CameraController.h"
 #include "Model.h"
+#include "stb_image.h"
 
 #include <assert.h>
+#include <map>
 
 Application* Application::s_Instance = nullptr;
 
@@ -43,6 +45,8 @@ void Application::Run()
 	auto io = ImGui::GetIO();
 
 	Shader shader("src/Shaders/VertexShader.vert", "src/Shaders/FragmentShader.frag");
+	Shader outlineShader("src/Shaders/VertexShader.vert", "src/Shaders/OutlineShader.frag");
+	Shader grassShader("src/Shaders/GrassVertexShader.vert", "src/Shaders/GrassFragmentShader.frag");
 
 	GameObject* mainCamera = new GameObject("Main Camera", m_World);
     mainCamera->AddComponent<Transform>();
@@ -88,8 +92,75 @@ void Application::Run()
 		m_World.AddGameObject(light);
 		pointLights.push_back(light);
 	}
-
 	Model backPack("src/resources/backpack/backpack.obj");
+
+	std::vector<glm::vec3> vegetation;
+	vegetation.push_back(glm::vec3(-1.5f, 0.0f, -0.48f));
+	vegetation.push_back(glm::vec3(1.5f, 0.0f, 0.51f));
+	vegetation.push_back(glm::vec3(0.0f, 0.0f, 0.7f));
+	vegetation.push_back(glm::vec3(-0.3f, 0.0f, -2.3f));
+	vegetation.push_back(glm::vec3(0.5f, 0.0f, -0.6f));
+
+
+	float vegetationVertices[] = {
+		// positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
+		0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
+		0.0f, -0.5f,  0.0f,  0.0f,  1.0f,
+		1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
+
+		0.0f,  0.5f,  0.0f,  0.0f,  0.0f,
+		1.0f, -0.5f,  0.0f,  1.0f,  1.0f,
+		1.0f,  0.5f,  0.0f,  1.0f,  0.0f
+	};
+
+
+	unsigned int grassVAO;
+	unsigned int grassVBO;
+	glGenVertexArrays(1, &grassVAO);
+	glGenBuffers(1, &grassVBO);
+
+	glBindVertexArray(grassVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, grassVBO);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vegetationVertices), vegetationVertices, GL_STATIC_DRAW);
+	
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(3 * sizeof(float)));
+	glBindVertexArray(0);
+
+
+	std::string fileName = std::string("src/Resources/blending_transparent_window.png");
+
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponents;
+	unsigned char* data = stbi_load(fileName.c_str(), &width, &height, &nrComponents, 0);
+
+	if (data)
+	{
+		GLenum format;
+		if (nrComponents == 1)
+			format = GL_RED;
+		else if (nrComponents == 3)
+			format = GL_RGB;
+		else if (nrComponents == 4)
+			format = GL_RGBA;
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+	}
+
 
 	while (m_Window.Running())
 	{
@@ -125,6 +196,12 @@ void Application::Run()
 		shader.UniformMat4("view", viewMat);
 		shader.UniformMat4("projection", projMat);
 
+		//stencil test
+
+		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+		
+		glStencilFunc(GL_ALWAYS, 1, 0xFF);
+		glStencilMask(0xFF);
 
 		// render the loaded model
 		glm::mat4 model = glm::mat4(1.0f);
@@ -132,6 +209,45 @@ void Application::Run()
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
 		shader.UniformMat4("model", model);
 		backPack.Draw(shader);
+
+		glStencilMask(0x00);
+		glDisable(GL_DEPTH_TEST);
+
+		outlineShader.Use();
+
+		model = glm::scale(model, glm::vec3(1.02f, 1.02f, 1.02f));
+		outlineShader.UniformMat4("model", model);
+		outlineShader.UniformMat4("view", viewMat);
+		outlineShader.UniformMat4("projection", projMat);
+
+		glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+		backPack.Draw(outlineShader);
+
+		glStencilMask(0xFF);
+		glEnable(GL_DEPTH_TEST);
+		glStencilFunc(GL_ALWAYS, 1, 0xFF);
+
+		grassShader.Use();
+		glBindVertexArray(grassVAO);
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		grassShader.UniformMat4("view", viewMat);
+		grassShader.UniformMat4("projection", projMat);
+		grassShader.UniformInt("texture1", 0);
+
+		std::map<float, glm::vec3> sorted;
+		for (unsigned int i = 0; i < vegetation.size(); i++)
+		{
+			float distance = glm::length(mainCamera->GetComponent<Transform>()->GetPosition() - vegetation[i]);
+			sorted[distance] = vegetation[i];
+		}
+
+		for (auto it = sorted.rbegin(); it != sorted.rend(); ++it)
+		{
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, it->second);
+			grassShader.UniformMat4("model", model);
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+		}
 
 		bool show_demo_window = true;
 		if (show_demo_window)

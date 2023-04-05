@@ -132,11 +132,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\FragmentShader.frag" />
+    <None Include="src\Shaders\GrassFragmentShader.frag" />
+    <None Include="src\Shaders\GrassVertexShader.vert" />
+    <None Include="src\Shaders\OutlineShader.frag" />
     <None Include="src\Shaders\VertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png" />
     <Image Include="src\Resources\backpack\normal.png" />
+    <Image Include="src\Resources\grass.png" />
     <Image Include="src\Resources\pepe.png" />
     <Image Include="src\Resources\pepe_specular_map.png" />
   </ItemGroup>

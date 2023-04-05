@@ -145,6 +145,9 @@
     <None Include="src\Shaders\VertexShader.vert">
       <Filter>src\Shaders</Filter>
     </None>
+    <None Include="src\Shaders\OutlineShader.frag" />
+    <None Include="src\Shaders\GrassVertexShader.vert" />
+    <None Include="src\Shaders\GrassFragmentShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png">
@@ -159,5 +162,6 @@
     <Image Include="src\Resources\pepe_specular_map.png">
       <Filter>src\Resources</Filter>
     </Image>
+    <Image Include="src\Resources\grass.png" />
   </ItemGroup>
 </Project>

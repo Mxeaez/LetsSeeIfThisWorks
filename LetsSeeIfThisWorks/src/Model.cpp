@@ -79,6 +79,7 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 				glm::vec2 vec;
 				vec.x = mesh->mTextureCoords[0][i].x;
 				vec.t = mesh->mTextureCoords[0][i].y;
+				vertex.texCoords = vec;
 			}
 			else
 			{
