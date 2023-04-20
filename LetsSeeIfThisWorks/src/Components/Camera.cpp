@@ -4,12 +4,14 @@
 #include <iostream>
 #include "glad/glad.h"
 #include "gtc/type_ptr.hpp"
+#include "stb_image.h"
+#include "../Logger.h"
 
 Camera::Camera(GameObject& gameObject, const std::string& name)
 	: m_FOV(glm::radians(45.0f))
 	, m_Aspect(800.0f / 600.0f)
 	, m_NearClip(0.1f)
-	, m_FarClip(100.0f)
+	, m_FarClip(10000.0f)
 	, Component(gameObject, name)
 {
 	m_ProjectionMat = glm::perspective(m_FOV, m_Aspect, m_NearClip, m_FarClip);
@@ -38,7 +40,6 @@ Camera::Camera(float fov, float aspect, float nearClip, float farClip, GameObjec
 
 	unsigned int location = glGetUniformLocation(program, "projection");
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m_ProjectionMat));
-
 }
 
 void Camera::OnStart()
@@ -59,6 +60,7 @@ void Camera::OnUpdate()
 
 	//location = glGetUniformLocation(program, "projection");
 	//glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m_ProjectionMat));
+
 }
 
 const glm::mat4 Camera::GetViewMat() const

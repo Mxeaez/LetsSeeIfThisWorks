@@ -26,6 +26,7 @@ project "LetsSeeIfThisWorks"
 	language "C++"
 	cppdialect "C++17"
 	systemversion "latest"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -64,7 +65,10 @@ project "LetsSeeIfThisWorks"
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
+		runtime "Debug"
+		symbols "on"
 		
 	filter "configurations:Release"
 		defines { "NDEBUG" }
 		optimize "On"
+		runtime "Release"

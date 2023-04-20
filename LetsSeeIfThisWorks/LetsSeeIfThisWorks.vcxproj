@@ -20,7 +20,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
@@ -60,12 +60,14 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Submodules\GLFW\include;..\Submodules\GLAD\include;..\Submodules\glm\glm;..\Submodules\stb_image;..\Submodules\spdlog\include;..\Submodules\imgui;..\Submodules\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -97,6 +99,7 @@
     <ClInclude Include="src\Components\CameraController.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\Components\Light.h" />
+    <ClInclude Include="src\Components\Skybox.h" />
     <ClInclude Include="src\Components\Transform.h" />
     <ClInclude Include="src\FileSystem.h" />
     <ClInclude Include="src\GameObject.h" />
@@ -116,6 +119,7 @@
     <ClCompile Include="src\Components\Camera.cpp" />
     <ClCompile Include="src\Components\CameraController.cpp" />
     <ClCompile Include="src\Components\Light.cpp" />
+    <ClCompile Include="src\Components\Skybox.cpp" />
     <ClCompile Include="src\Components\Transform.cpp" />
     <ClCompile Include="src\FileSystem.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
@@ -132,14 +136,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\FragmentShader.frag" />
-    <None Include="src\Shaders\GrassFragmentShader.frag" />
-    <None Include="src\Shaders\GrassVertexShader.vert" />
-    <None Include="src\Shaders\OutlineShader.frag" />
+    <None Include="src\Shaders\SkyboxFragmentShader.frag" />
+    <None Include="src\Shaders\SkyboxVertexShader.vert" />
     <None Include="src\Shaders\VertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png" />
     <Image Include="src\Resources\backpack\normal.png" />
+    <Image Include="src\Resources\blending_transparent_window.png" />
+    <Image Include="src\Resources\floor.png" />
     <Image Include="src\Resources\grass.png" />
     <Image Include="src\Resources\pepe.png" />
     <Image Include="src\Resources\pepe_specular_map.png" />

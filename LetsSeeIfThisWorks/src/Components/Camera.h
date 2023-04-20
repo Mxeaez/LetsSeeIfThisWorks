@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "glm.hpp"
+#include "../Shader.h"
 
 class Camera : public Component
 {
@@ -26,5 +27,4 @@ private:
 	float m_Aspect;
 	float m_NearClip;
 	float m_FarClip;
-
 };

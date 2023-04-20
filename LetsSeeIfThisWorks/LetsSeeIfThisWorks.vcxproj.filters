@@ -45,6 +45,9 @@
     <ClInclude Include="src\Components\Light.h">
       <Filter>src\Components</Filter>
     </ClInclude>
+    <ClInclude Include="src\Components\Skybox.h">
+      <Filter>src\Components</Filter>
+    </ClInclude>
     <ClInclude Include="src\Components\Transform.h">
       <Filter>src\Components</Filter>
     </ClInclude>
@@ -98,6 +101,9 @@
     <ClCompile Include="src\Components\Light.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components\Skybox.cpp">
+      <Filter>src\Components</Filter>
+    </ClCompile>
     <ClCompile Include="src\Components\Transform.cpp">
       <Filter>src\Components</Filter>
     </ClCompile>
@@ -142,12 +148,15 @@
     <None Include="src\Shaders\FragmentShader.frag">
       <Filter>src\Shaders</Filter>
     </None>
+    <None Include="src\Shaders\SkyboxFragmentShader.frag">
+      <Filter>src\Shaders</Filter>
+    </None>
+    <None Include="src\Shaders\SkyboxVertexShader.vert">
+      <Filter>src\Shaders</Filter>
+    </None>
     <None Include="src\Shaders\VertexShader.vert">
       <Filter>src\Shaders</Filter>
     </None>
-    <None Include="src\Shaders\OutlineShader.frag" />
-    <None Include="src\Shaders\GrassVertexShader.vert" />
-    <None Include="src\Shaders\GrassFragmentShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\awesomeface.png">
@@ -156,12 +165,20 @@
     <Image Include="src\Resources\backpack\normal.png">
       <Filter>src\Resources\backpack</Filter>
     </Image>
+    <Image Include="src\Resources\blending_transparent_window.png">
+      <Filter>src\Resources</Filter>
+    </Image>
+    <Image Include="src\Resources\floor.png">
+      <Filter>src\Resources</Filter>
+    </Image>
+    <Image Include="src\Resources\grass.png">
+      <Filter>src\Resources</Filter>
+    </Image>
     <Image Include="src\Resources\pepe.png">
       <Filter>src\Resources</Filter>
     </Image>
     <Image Include="src\Resources\pepe_specular_map.png">
       <Filter>src\Resources</Filter>
     </Image>
-    <Image Include="src\Resources\grass.png" />
   </ItemGroup>
 </Project>
